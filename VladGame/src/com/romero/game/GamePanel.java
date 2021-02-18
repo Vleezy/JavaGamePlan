@@ -1,5 +1,9 @@
 package com.romero.game;
 
+import com.romero.game.states.GameStateManager;
+import com.romero.game.util.KeyHandler;
+import com.romero.game.util.MouseHandler;
+
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,6 +19,10 @@ public class GamePanel extends JPanel implements Runnable{
     private BufferedImage img;
     private Graphics2D g;
 
+    private MouseHandler mouse;
+    private KeyHandler key;
+
+    private GameStateManager gsm;
 
     public GamePanel(int width, int height){
         this.width = width;
@@ -40,7 +48,13 @@ public class GamePanel extends JPanel implements Runnable{
 
         img= new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         g = (Graphics2D) img.getGraphics();
+
+        mouse = new MouseHandler();
+        key = new KeyHandler();
+
+        gsm = new GameStateManager();
     }
+
     public void run(){
         init();
 
@@ -66,7 +80,7 @@ public class GamePanel extends JPanel implements Runnable{
             // Game Loop: Tick/Update Count
             while(((now - lastUpdateTime) > TBU) && (updateCount < MUBR)) {
                 update(); // can fix lag on other computers by giving it an argument speed/delta
-                input();
+                input(mouse, key);
                 lastUpdateTime += TBU;
                 updateCount++;
             }
@@ -74,7 +88,7 @@ public class GamePanel extends JPanel implements Runnable{
             if(now- lastUpdateTime > TBU) {
                 lastUpdateTime = now - TBU;
             }
-            input();
+            input(mouse, key);
             render(); // can fix lag on other computers by giving it an argument speed/delta
             draw();
 
@@ -108,12 +122,12 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     public void update(){
-
+        gsm.update();
 
     }
 
-    public void input(){
-
+    public void input(MouseHandler mouse, KeyHandler key){
+        gsm.input(mouse, key);
 
     }
 
@@ -121,6 +135,7 @@ public class GamePanel extends JPanel implements Runnable{
         if(g != null){
             g.setColor(new Color(66, 134, 244)); // Color for Background
             g.fillRect(0,0, width, height); // Rectangle Background
+            gsm.render(g);
         }
     }
 
