@@ -11,7 +11,7 @@ import java.util.Vector;
 
 public class Sprite {
 
-    private final BufferedImage SPRITESHEET = null;
+    private BufferedImage SPRITESHEET = null;
     private BufferedImage[][] spriteArray;
     private final int TILE_SIZE = 32;
     public int w;
@@ -69,9 +69,9 @@ public class Sprite {
     private BufferedImage loadSprite(String file){
         BufferedImage sprite = null;
         try{
-            sprite = ImageIO.read(getClass().getClassLoader().getResource(file));
+            sprite = ImageIO.read(getClass().getClassLoader().getResourceAsStream(file));
         }catch(Exception e){
-           System.out.println("ERROR: Could not load file: " + file);
+            System.out.println("ERROR: Could not load file: " + file);
         }
         return sprite;
     }
@@ -79,12 +79,12 @@ public class Sprite {
     public void loadSpriteArray(){
         spriteArray = new BufferedImage[wSprite][hSprite]; //     Total number w: columns, h: rows in spritesheet
 
-                for(int x = 0; x < wSprite; x++){
-                    for(int y = 0; y < hSprite; y++){
-                        spriteArray[x][y] = getSprite(x, y);
-                    }
-                }
-             }
+        for(int x = 0; x < wSprite; x++){
+            for(int y = 0; y < hSprite; y++){
+                spriteArray[x][y] = getSprite(x, y);
+            }
+        }
+    }
 
     public BufferedImage getSpriteSheet(){
         return SPRITESHEET;
@@ -104,7 +104,7 @@ public class Sprite {
         return spriteArray;
     }
 
-//     Graphing images in a line
+    //     Graphing images in a line
     public static void drawArray(Graphics2D g, ArrayList<BufferedImage> img, Vector2f pos, int width, int height, int xOffset, int yOffset){
         float x = pos.x;
         float y = pos.y;
@@ -118,7 +118,7 @@ public class Sprite {
         }
     }
 
-//    Font
+    //    Font
     public static void drawArray(Graphics2D g, Font f, String word, Vector2f pos, int width, int height, int xOffset, int yOffset){
         float x = pos.x;
         float y = pos.y;
