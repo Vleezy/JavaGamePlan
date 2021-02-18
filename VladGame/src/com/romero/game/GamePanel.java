@@ -6,7 +6,12 @@ import com.romero.game.util.MouseHandler;
 
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+/*
+ * @author Vlad
+ */
 
 public class GamePanel extends JPanel implements Runnable{
 
@@ -49,7 +54,7 @@ public class GamePanel extends JPanel implements Runnable{
         img= new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         g = (Graphics2D) img.getGraphics();
 
-        mouse = new MouseHandler();
+        mouse = new MouseHandler(this);
         key = new KeyHandler(this);
 
         gsm = new GameStateManager();

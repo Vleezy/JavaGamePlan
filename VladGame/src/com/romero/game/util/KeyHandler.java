@@ -14,7 +14,7 @@ public class KeyHandler implements KeyListener {
     public static List<Key> keys = new ArrayList<Key>();
 
     public class Key{
-        public int presses, abosrbs;
+        public int presses, absorbs;
         public boolean down, clicked;
 
         public Key(){
@@ -31,8 +31,8 @@ public class KeyHandler implements KeyListener {
         }
 
         public void tick(){
-            if(abosrbs < presses){
-                abosrbs++;
+            if(absorbs < presses){
+                absorbs++;
                 clicked = true;
             } else {
                 clicked = false;
