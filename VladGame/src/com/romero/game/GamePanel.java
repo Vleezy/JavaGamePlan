@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /*
- * @author Vlad
+ * @author Lango
  */
 
 public class GamePanel extends JPanel implements Runnable{
