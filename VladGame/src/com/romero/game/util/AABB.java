@@ -4,7 +4,7 @@ import com.romero.game.entity.Entity;
 
 import javax.swing.text.MutableAttributeSet;
 
-//Collison Class
+//Collison Class (Axis-Aligned Bounding Box)
 public class AABB {
 
     private Vector2f pos;
