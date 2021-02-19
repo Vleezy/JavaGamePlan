@@ -22,7 +22,7 @@ public abstract class Entity {
     protected Animation ani;
     protected Sprite sprite;
     protected Vector2f pos;
-    private int size;
+    protected int size;
 
     protected boolean up;
     protected boolean down;
