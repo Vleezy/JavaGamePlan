@@ -1,15 +1,23 @@
 package com.romero.game.states;
 
+import com.romero.game.graphics.Font;
+import com.romero.game.graphics.Sprite;
 import com.romero.game.util.KeyHandler;
 import com.romero.game.util.MouseHandler;
+import com.romero.game.util.Vector2f;
 
 import java.awt.Graphics2D;
 import java.awt.Color;
 
 public class PlayState extends GameState {
 
+    private Font font;
+
     public PlayState(GameStateManager gsm){
+
         super(gsm);
+        // To fix the issue File > Project Structure > Modules: Click Res, then mark it as source. Apply and Save.
+        font = new Font("font/font.png", 16, 16);
     }
 
     public void update(){
@@ -17,14 +25,12 @@ public class PlayState extends GameState {
     }
 
     public void input(MouseHandler mouse, KeyHandler key){
-        if(key.up.down){
-            System.out.println("'W' button was pressed");
-        }
+
+
     }
 
     public void render(Graphics2D g){
-        g.setColor(Color.RED);
-        g.fillRect(100,100,64,64);
+        Sprite.drawArray(g, font, "My Java Game", new Vector2f(100,100), 32, 32, 16, 0); //   Caps for now
     }
 
 
