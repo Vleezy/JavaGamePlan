@@ -92,7 +92,7 @@ public class Font {
     }
 
     public BufferedImage getFont(char letter) {
-        int value = letter - 65;
+        int value = letter;
 //        System.out.println(value);
         int x = value % wLetter;
         int y = value / wLetter;
