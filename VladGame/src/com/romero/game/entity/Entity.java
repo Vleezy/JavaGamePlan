@@ -3,8 +3,6 @@ package com.romero.game.entity;
 import com.romero.game.graphics.Animation;
 import com.romero.game.graphics.Sprite;
 import com.romero.game.util.AABB;
-import com.romero.game.util.KeyHandler;
-import com.romero.game.util.MouseHandler;
 import com.romero.game.util.Vector2f;
 
 import java.awt.*;
@@ -13,10 +11,10 @@ import java.awt.image.BufferedImage;
 //Player, enemy anything that can move
 public abstract class Entity {
 
-    private final int UP = 0;
-    private final int DOWN = 1;
-    private final int RIGHT = 2;
-    private final int LEFT = 3;
+    private final int UP = 3;
+    private final int DOWN = 2;
+    private final int RIGHT = 0;
+    private final int LEFT = 1;
     protected int currentAnimation;
 
     protected Animation ani;
@@ -24,6 +22,7 @@ public abstract class Entity {
     protected Vector2f pos;
     protected int size;
 
+    // Buttons
     protected boolean up;
     protected boolean down;
     protected boolean right;
@@ -35,9 +34,10 @@ public abstract class Entity {
     protected float dx;
     protected float dy;
 
-    protected float maxSpeed;
-    protected float acc;
-    protected float deacc;
+    //Movement Speeds
+    protected float maxSpeed = 4f;
+    protected float acc = 3f;
+    protected float deacc = 0.3f; // Can use for a slide on ice effect
 
     protected AABB hitBounds;
     protected AABB bounds;
@@ -149,9 +149,9 @@ public abstract class Entity {
     }
 
     public abstract void render(Graphics2D g);
-    public void input(KeyHandler key, MouseHandler mouse){
-
-    }
+//    public void input(KeyHandler key, MouseHandler mouse){
+//
+//    }
 
 
 }

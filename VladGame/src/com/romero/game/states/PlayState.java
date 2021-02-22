@@ -20,7 +20,7 @@ public class PlayState extends GameState {
         super(gsm);
         // To fix the issue File > Project Structure > Modules: Click Res, then mark it as source. Apply and Save.
         font = new Font("font/font.png", 16, 16);
-        player = new Player(new Sprite("entity/Player.png"), new Vector2f(300,300), 32);
+        player = new Player(new Sprite("entity/Player.png"), new Vector2f(300,300), 128); // Player
     }
 
     public void update(){
