@@ -139,7 +139,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void render(){
         if(g != null){
-            g.setColor(new Color(66, 134, 244)); // Color for Background
+            g.setColor(new Color(30, 50, 200)); // Color for Background
             g.fillRect(0,0, width, height); // Rectangle Background
             gsm.render(g);
         }

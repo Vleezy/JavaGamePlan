@@ -6,12 +6,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import java.awt.Graphics2D;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -73,16 +70,24 @@ public class TileManager {
                 }
 
                 data[i] = eElement.getElementsByTagName("data").item(0).getTextContent();
-                System.out.println("-----------------------------------\n" + data[i]);
+//                System.out.println("-----------------------------------\n" + data[i]);
+
+                if(i >= 1){
+                    tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                }else{
+                    tm.add(new tileMapObj(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                }
             }
         } catch(Exception e) {
-            System.out.println("ERROR - FILEMANAGER: Can not read tilemap");
+            System.out.println("ERROR - TILEMANAGER: Can not read tilemap");
         }
 
     }
 
     public void render(Graphics2D g){
-
+        for(int i = 0; i < tm.size(); i++){
+            tm.get(i).render(g);
+        }
     }
 
 }
