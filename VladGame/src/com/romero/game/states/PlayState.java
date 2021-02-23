@@ -4,10 +4,12 @@ import com.romero.game.GamePanel;
 import com.romero.game.entity.Player;
 import com.romero.game.graphics.Font;
 import com.romero.game.graphics.Sprite;
+import com.romero.game.tiles.TileManager;
 import com.romero.game.util.KeyHandler;
 import com.romero.game.util.MouseHandler;
 import com.romero.game.util.Vector2f;
 import com.romero.game.GamePanel;
+import com.romero.game.tiles.TileManager;
 
 import java.awt.Graphics2D;
 import java.awt.Color;
@@ -16,10 +18,14 @@ public class PlayState extends GameState {
 
     private Font font;
     private Player player;
+    private TileManager tm;
 
     public PlayState(GameStateManager gsm){
 
         super(gsm);
+
+        tm = new TileManager("tile/tilemap.xml");
+
         // To fix the issue File > Project Structure > Modules: Click Res, then mark it as source. Apply and Save.
         font = new Font("font/Font2.png", 10, 10);
         player = new Player(new Sprite("entity/Player.png"), new Vector2f(300,300), 128); // Player
